@@ -1,0 +1,19 @@
+{
+  // Tell the VS Code built-in CSS language server to silently ignore
+  // at-rules it doesn't recognise. This eliminates the "Unknown at rule"
+  // warnings for Tailwind v4's CSS-native directives:
+  //   @theme, @custom-variant, @apply, @layer, @variant
+  // These are all valid Tailwind v4 syntax processed by PostCSS/Turbopack
+  // at build time — the VS Code CSS server simply has no knowledge of them.
+  "css.lint.unknownAtRules": "ignore",
+
+  // Keep the Tailwind IntelliSense extension (if installed) pointing at
+  // globals.css as the primary config file for class suggestions.
+  "tailwindCSS.experimental.configFile": null,
+
+  // Recommended: treat .css files as plain CSS (not SCSS/LESS) so that
+  // the language server uses the right parser for Tailwind v4 files.
+  "files.associations": {
+    "*.css": "css"
+  }
+}

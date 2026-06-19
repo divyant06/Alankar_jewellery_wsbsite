@@ -1,0 +1,403 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Alankar Luxury Commerce — Global Design System
+   Tailwind CSS v4 · CSS-native @theme configuration
+   Reference: bluestone-DESIGN.md + ALANKAR-PRD.md
+───────────────────────────────────────────────────────────────────────────── */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ── Alankar Brand Color Palette ──────────────────────────────────────── */
+
+  /* Primary structural & text */
+  --color-brand-navy: #020b1e;
+
+  /* Metallic gold hierarchy */
+  --color-brand-gold: #c5a85c;
+  --color-burnished-gold: #a38741;
+
+  /* Luxury background canvas */
+  --color-champagne-bg: #fffbf5;
+  --color-champagne-accent: #f7f3e8;
+
+  /* Neutral surface palette (from bluestone-DESIGN.md) */
+  --color-page-white: #ffffff;
+  --color-slate-border: #e2e8f0;
+  --color-near-black: #020817;
+
+  /* ── shadcn/ui Semantic Token Overrides ───────────────────────────────── */
+  /* Remap shadcn semantic tokens to Alankar brand primitives */
+  --color-background: var(--color-page-white);
+  --color-foreground: var(--color-brand-navy);
+  --color-card: var(--color-page-white);
+  --color-card-foreground: var(--color-brand-navy);
+  --color-popover: var(--color-page-white);
+  --color-popover-foreground: var(--color-brand-navy);
+  --color-primary: var(--color-brand-gold);
+  --color-primary-foreground: var(--color-page-white);
+  --color-secondary: var(--color-champagne-accent);
+  --color-secondary-foreground: var(--color-brand-navy);
+  --color-muted: var(--color-champagne-bg);
+  --color-muted-foreground: oklch(0.45 0 0);
+  --color-accent: var(--color-champagne-accent);
+  --color-accent-foreground: var(--color-brand-navy);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-border: var(--color-slate-border);
+  --color-input: var(--color-slate-border);
+  --color-ring: var(--color-brand-gold);
+
+  /* Domine: editorial serif headings & brand display */
+  --font-domine: var(--font-domine-loaded), "Georgia", serif;
+  /* Mulish: technical copy, pricing, filters, labels, forms */
+  --font-mulish: var(--font-mulish-loaded), "Inter", system-ui, sans-serif;
+  /* Playfair Display: dramatic hero statements & large editorial pull-quotes only */
+  --font-playfair: var(--font-playfair-loaded), "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  /* Semantic aliases */
+  --font-heading: var(--font-domine);
+  --font-sans: var(--font-mulish);
+  --font-mono: var(--font-geist-mono);
+
+  /* ── Border Radius (from bluestone-DESIGN.md) ─────────────────────────── */
+  /* Premium profile: crisp sm/md max, no heavy rounding */
+  --radius: 0.5rem; /* 8px base — matches radius-md */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* ── Spacing System (8px base grid from bluestone-DESIGN.md) ─────────── */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 24px;
+  --spacing-6: 30px;
+  --spacing-7: 40px;
+  --spacing-8: 48px;
+  --spacing-9: 65px;
+
+  /* ── Elevation / Shadow (ambient flat profile per DESIGN.md) ──────────── */
+  --shadow-ambient: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0px 1px 3px 0px rgba(2, 11, 30, 0.06),
+    0px 1px 2px -1px rgba(2, 11, 30, 0.04);
+
+  /* ── Sidebar tokens (required by shadcn) ─────────────────────────────── */
+  --color-sidebar: var(--color-champagne-bg);
+  --color-sidebar-foreground: var(--color-brand-navy);
+  --color-sidebar-primary: var(--color-brand-gold);
+  --color-sidebar-primary-foreground: var(--color-page-white);
+  --color-sidebar-accent: var(--color-champagne-accent);
+  --color-sidebar-accent-foreground: var(--color-brand-navy);
+  --color-sidebar-border: var(--color-slate-border);
+  --color-sidebar-ring: var(--color-brand-gold);
+
+  /* Chart tokens (shadcn requirement) */
+  --color-chart-1: var(--color-brand-gold);
+  --color-chart-2: var(--color-burnished-gold);
+  --color-chart-3: var(--color-champagne-accent);
+  --color-chart-4: oklch(0.556 0 0);
+  --color-chart-5: oklch(0.439 0 0);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CSS Custom Properties — Runtime Variables
+   These power runtime JS access (e.g., canvas, chart libraries)
+───────────────────────────────────────────────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --foreground: #020b1e;
+
+  --card: #ffffff;
+  --card-foreground: #020b1e;
+
+  --popover: #ffffff;
+  --popover-foreground: #020b1e;
+
+  --primary: #c5a85c;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f7f3e8;
+  --secondary-foreground: #020b1e;
+
+  --muted: #fffbf5;
+  --muted-foreground: oklch(0.45 0 0);
+
+  --accent: #f7f3e8;
+  --accent-foreground: #020b1e;
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #c5a85c;
+
+  --radius: 0.5rem;
+
+  /* Gold market ticker reference */
+  --gold-24k: 7400;
+  --gold-22k: 6780;
+  --gold-18k: 5550;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Tailwind Base Layer — Global Resets & Foundational Rules
+───────────────────────────────────────────────────────────────────────────── */
+@layer base {
+  /* Universal border and focus-ring reset using brand tokens */
+  *,
+  *::before,
+  *::after {
+    @apply border-slate-border outline-ring/50;
+    box-sizing: border-box;
+  }
+
+  /* Document root: pristine white with champagne undertone on body scroll areas */
+  html {
+    @apply bg-page-white text-brand-navy;
+    font-family: var(--font-mulish);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  /* Body: standard white canvas, navy text */
+  body {
+    @apply bg-white text-brand-navy min-h-full flex flex-col;
+    font-family: var(--font-mulish);
+    line-height: 1.6;
+  }
+
+  /* Editorial headings: Domine serif */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-domine);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--color-brand-navy, #020b1e);
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 2.5rem;  /* 40px */
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 1.875rem; /* 30px */
+  }
+
+  h3 {
+    font-size: 1.5rem;   /* 24px — matches bluestone display-heading */
+  }
+
+  h4 {
+    font-size: 1.125rem; /* 18px — matches bluestone section-subheading */
+  }
+
+  /* Anchor defaults: clean, gold on hover */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  a:hover {
+    color: var(--color-brand-gold, #c5a85c);
+  }
+
+  /* Input base: ultra-thin elegant border */
+  input,
+  textarea,
+  select {
+    font-family: var(--font-mulish);
+    border: 0.5px solid #e2e8f0;
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--color-brand-gold, #c5a85c);
+    box-shadow: 0 0 0 2px rgba(197, 168, 92, 0.15);
+  }
+
+  /* Button base: no user-agent styles */
+  button {
+    font-family: var(--font-mulish);
+    cursor: pointer;
+  }
+
+  /* Image defaults */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Remove default list styles for nav usage */
+  ul[role="list"],
+  ol[role="list"] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Utility Layer — Alankar Brand Utilities
+───────────────────────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* ── Luxury tracking: the Alankar signature uppercase label style ──────── */
+  /* Applied to: category sub-labels, filter chips, badge text, section caps  */
+  .luxury-tracking {
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: var(--font-mulish);
+    font-size: 0.75rem;   /* 12px — matches bluestone caption-uppercase */
+    font-weight: 600;
+    line-height: 1rem;    /* 16px */
+  }
+
+  /* ── Metallic gold text gradient — for hero display text ─────────────── */
+  .text-gold-gradient {
+    background: linear-gradient(
+      135deg,
+      #c5a85c 0%,
+      #e8d5a3 40%,
+      #c5a85c 70%,
+      #a38741 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ── Champagne shimmer surface — hero/feature section backgrounds ─────── */
+  .bg-champagne-shimmer {
+    background: linear-gradient(
+      160deg,
+      #fffbf5 0%,
+      #ffffff 35%,
+      #fffbf5 65%,
+      #f7f3e8 100%
+    );
+  }
+
+  /* ── Luxury card border — ultra-thin 0.5px elegant profile ───────────── */
+  .border-luxury {
+    border: 0.5px solid rgba(226, 232, 240, 0.6);
+    border-radius: var(--radius-md);
+  }
+
+  /* ── Ambient shadow — soft diffused, non-harsh elevation ─────────────── */
+  .shadow-ambient {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ── Gold accent divider — horizontal rule with brand gold ───────────── */
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #c5a85c 30%,
+      #e8d5a3 50%,
+      #c5a85c 70%,
+      transparent 100%
+    );
+    opacity: 0.5;
+  }
+
+  /* ── Gold CTA button base ─────────────────────────────────────────────── */
+  .btn-gold {
+    background-color: #c5a85c;
+    color: #ffffff;
+    font-family: var(--font-mulish);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid #c5a85c;
+    transition: background-color 200ms ease, border-color 200ms ease,
+      box-shadow 200ms ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .btn-gold:hover {
+    background-color: #a38741;
+    border-color: #a38741;
+    box-shadow: 0 4px 14px rgba(163, 135, 65, 0.25);
+  }
+
+  .btn-gold:focus-visible {
+    outline: 2px solid #c5a85c;
+    outline-offset: 2px;
+  }
+
+  /* ── Outlined gold button (secondary CTA) ────────────────────────────── */
+  .btn-gold-outline {
+    background-color: transparent;
+    color: #c5a85c;
+    font-family: var(--font-mulish);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid #c5a85c;
+    transition: background-color 200ms ease, color 200ms ease,
+      box-shadow 200ms ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .btn-gold-outline:hover {
+    background-color: #c5a85c;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(197, 168, 92, 0.2);
+  }
+
+  .btn-gold-outline:focus-visible {
+    outline: 2px solid #c5a85c;
+    outline-offset: 2px;
+  }
+
+  /* ── Price badge — used in gold rate ticker ───────────────────────────── */
+  .price-badge {
+    font-family: var(--font-mulish);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #c5a85c;
+    background-color: rgba(197, 168, 92, 0.08);
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 0.5px solid rgba(197, 168, 92, 0.3);
+    letter-spacing: 0.03em;
+  }
+}
