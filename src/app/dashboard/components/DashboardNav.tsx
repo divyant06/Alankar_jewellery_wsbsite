@@ -6,10 +6,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/useAuthStore";
 
 const NAV_LINKS = [
-  { name: "Vault Overview", href: "/dashboard" },
-  { name: "Order Concierge", href: "/dashboard/orders" },
+  { name: "Vault Overview",    href: "/dashboard" },
+  { name: "Order Concierge",   href: "/dashboard/orders" },
   { name: "Address Directory", href: "/dashboard/addresses" },
-  { name: "Security Settings", href: "/dashboard/settings" },
+  { name: "Security Settings", href: "/dashboard/security" },
 ];
 
 export default function DashboardNav() {
