@@ -50,7 +50,7 @@ function JaaliPattern() {
 ───────────────────────────────────────────────────────────────────────────── */
 
 const INPUT_CLASS =
-  "w-full bg-transparent border-b border-gray-300 focus:border-brand-gold outline-none pb-2 text-sm text-brand-navy placeholder:text-gray-300 transition-colors duration-200";
+  "w-full bg-transparent border-b border-gray-300 focus:border-brand-gold outline-none pb-2 text-base text-brand-navy placeholder:text-gray-300 transition-colors duration-200";
 
 const LABEL_CLASS =
   "block text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-3 group-focus-within:text-brand-gold transition-colors";

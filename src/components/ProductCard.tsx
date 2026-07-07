@@ -9,6 +9,8 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 
 interface ProductCardProps {
   product: MockProduct;
+  /** Card position in the grid — first 2 cards get priority LCP loading */
+  index?: number;
 }
 
 /**
@@ -24,7 +26,7 @@ function formatINR(amount: number): string {
   }).format(Math.round(amount));
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, index = 99 }: ProductCardProps) {
   const rates = useGoldRateStore((state) => state.rates);
 
   /**
@@ -52,6 +54,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           alt={`${product.name} — handcrafted luxury jewellery by Alankar`}
           fill
           quality={100}
+          priority={index < 2}
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
@@ -101,7 +104,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* CTA — luxury-tracking uppercase link */}
           <Link
             href={`/product/${product.id}`}
-            className="luxury-tracking text-[9px] text-brand-gold border border-brand-gold px-3 py-2 rounded-sm hover:bg-brand-gold hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-1"
+            className="luxury-tracking text-[9px] text-brand-gold border border-brand-gold px-3 min-h-11 flex items-center rounded-sm hover:bg-brand-gold hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-1"
             aria-label={`View details for ${product.name}`}
           >
             View Details

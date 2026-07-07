@@ -334,7 +334,7 @@ export default function CheckoutPage() {
                       value={formData[key]}
                       onChange={(e) => updateField(key, e.target.value)}
                       placeholder={placeholder}
-                      className="w-full bg-transparent border-b border-gray-300 focus:border-brand-gold outline-none pb-3 text-sm text-brand-navy placeholder:text-gray-300 transition-colors font-medium"
+                      className="w-full bg-transparent border-b border-gray-300 focus:border-brand-gold outline-none pb-3 text-base text-brand-navy placeholder:text-gray-300 transition-colors font-medium"
                       style={{ fontFamily: "var(--font-mulish)" }}
                     />
                   </div>
@@ -367,7 +367,7 @@ export default function CheckoutPage() {
                       value={formData[key]}
                       onChange={(e) => updateField(key, e.target.value)}
                       placeholder={placeholder}
-                      className="w-full bg-transparent border-b border-gray-300 focus:border-brand-gold outline-none pb-3 text-sm text-brand-navy placeholder:text-gray-300 transition-colors font-medium"
+                      className="w-full bg-transparent border-b border-gray-300 focus:border-brand-gold outline-none pb-3 text-base text-brand-navy placeholder:text-gray-300 transition-colors font-medium"
                       style={{ fontFamily: "var(--font-mulish)" }}
                     />
                   </div>

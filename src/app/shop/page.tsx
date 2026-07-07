@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MOCK_PRODUCTS } from "@/lib/mockData";
-import ProductCard from "@/components/ProductCard";
+import StaggeredProductGrid from "@/components/animations/StaggeredProductGrid";
 
 /* ─────────────────────────────────────────────────────────────────────────────
    SEO Metadata — Server-rendered, fully static
@@ -229,12 +229,11 @@ export default function ShopPage() {
             </div>
           </div>
 
-          {/* Product grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {MOCK_PRODUCTS.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          {/* Product grid — staggered fade-in via framer-motion client component */}
+          <StaggeredProductGrid
+            products={MOCK_PRODUCTS}
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+          />
         </main>
       </div>
     </div>

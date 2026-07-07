@@ -83,10 +83,10 @@ export default function HomePage() {
       ─────────────────────────────────────────────────────────────────────── */}
       <section
         aria-label="Alankar Heritage Collection Hero"
-        className="relative w-full min-h-[92vh] grid grid-cols-1 lg:grid-cols-2"
+        className="relative w-full min-h-svh lg:min-h-[92vh] grid grid-cols-1 lg:grid-cols-2"
       >
         {/* Left — Dramatic Editorial Typography */}
-        <ScrollReveal direction="left" className="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-24 bg-champagne-bg order-2 lg:order-1">
+        <ScrollReveal direction="left" className="flex flex-col justify-center px-6 py-16 md:py-20 lg:px-16 xl:px-24 bg-champagne-bg order-2 lg:order-1">
 
           {/* Eyebrow label */}
           <span
@@ -98,7 +98,7 @@ export default function HomePage() {
 
           {/* Hero headline — Playfair Display for dramatic editorial impact */}
           <h1
-            className="text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-[1.05] tracking-tight text-brand-navy mb-8"
+            className="text-4xl sm:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-[1.05] tracking-tight text-brand-navy mb-8"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             The Alankar
@@ -111,7 +111,7 @@ export default function HomePage() {
           {/* SEO-rich subtext — Domine editorial weight */}
           <div className="max-w-md space-y-4 mb-10">
             <p
-              className="text-lg text-brand-navy/80 leading-relaxed"
+              className="text-base md:text-lg text-brand-navy/80 leading-relaxed"
               style={{ fontFamily: "var(--font-domine)" }}
             >
               Each Alankar piece is an enduring testament to heritage
@@ -119,7 +119,7 @@ export default function HomePage() {
               conflict-free diamonds selected for extraordinary brilliance.
             </p>
             <p
-              className="text-base text-brand-navy/60 leading-relaxed"
+              className="text-sm md:text-base text-brand-navy/60 leading-relaxed"
               style={{ fontFamily: "var(--font-mulish)" }}
             >
               From hand-engraved solitaire pendants to generational heirloom
@@ -139,7 +139,7 @@ export default function HomePage() {
           </div>
 
           {/* Trust indicators */}
-          <div className="flex gap-8 mt-14 pt-8 border-t border-slate-border/40">
+          <div className="flex flex-wrap gap-6 mt-12 pt-8 border-t border-slate-border/40">
             {[
               { stat: "22K+", label: "Gold Purity Certified" },
               { stat: "500+", label: "Unique Designs" },
@@ -184,7 +184,7 @@ export default function HomePage() {
       <ScrollReveal direction="up">
         <section
           aria-label="Alankar Brand Story"
-          className="bg-brand-navy py-24 px-8"
+          className="bg-brand-navy py-16 md:py-24 px-4 md:px-8"
         >
           <div className="max-w-5xl mx-auto">
             {/* Section label */}
@@ -197,7 +197,7 @@ export default function HomePage() {
               {/* Paragraph 1 — Ethical Sourcing */}
               <div className="flex flex-col gap-4">
                 <h2
-                  className="text-xl text-brand-gold leading-snug"
+                  className="text-xl md:text-2xl text-brand-gold leading-snug"
                   style={{ fontFamily: "var(--font-domine)" }}
                 >
                   Ethical Origins, Uncompromised Beauty
@@ -218,7 +218,7 @@ export default function HomePage() {
               {/* Paragraph 2 — Master Artisans */}
               <div className="flex flex-col gap-4">
                 <h2
-                  className="text-xl text-brand-gold leading-snug"
+                  className="text-xl md:text-2xl text-brand-gold leading-snug"
                   style={{ fontFamily: "var(--font-domine)" }}
                 >
                   Sixty Hands, One Masterpiece
@@ -241,7 +241,7 @@ export default function HomePage() {
               {/* Paragraph 3 — Generational Wealth */}
               <div className="flex flex-col gap-4">
                 <h2
-                  className="text-xl text-brand-gold leading-snug"
+                  className="text-xl md:text-2xl text-brand-gold leading-snug"
                   style={{ fontFamily: "var(--font-domine)" }}
                 >
                   Jewellery as Generational Legacy
@@ -272,7 +272,7 @@ export default function HomePage() {
       ─────────────────────────────────────────────────────────────────────── */}
       <section
         aria-label="Curated Jewellery Collections"
-        className="py-24 px-8 bg-white"
+        className="py-16 md:py-24 px-4 md:px-8 bg-white"
       >
         <div className="max-w-7xl mx-auto">
 
@@ -282,7 +282,7 @@ export default function HomePage() {
               Shop by Category
             </span>
             <h2
-              className="text-3xl lg:text-4xl text-brand-navy"
+              className="text-2xl md:text-3xl lg:text-4xl text-brand-navy"
               style={{ fontFamily: "var(--font-domine)" }}
             >
               The Curated Collections
@@ -330,7 +330,7 @@ export default function HomePage() {
       ─────────────────────────────────────────────────────────────────────── */}
       <section
         aria-label="Trending Jewellery Creations"
-        className="py-24 px-8 bg-champagne-bg"
+        className="py-16 md:py-24 px-4 md:px-8 bg-champagne-bg"
       >
         <div className="max-w-7xl mx-auto">
 
@@ -341,7 +341,7 @@ export default function HomePage() {
                 Featured This Season
               </span>
               <h2
-                className="text-3xl lg:text-4xl text-brand-navy"
+                className="text-2xl md:text-3xl lg:text-4xl text-brand-navy"
                 style={{ fontFamily: "var(--font-domine)" }}
               >
                 Trending Creations
@@ -369,7 +369,7 @@ export default function HomePage() {
       ─────────────────────────────────────────────────────────────────────── */}
       <section
         aria-label="Alankar Quality Guarantees"
-        className="py-14 px-8 bg-white border-t border-b border-slate-border/40"
+        className="py-12 md:py-14 px-4 md:px-8 bg-white border-t border-b border-slate-border/40"
       >
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
