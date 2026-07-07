@@ -110,11 +110,11 @@ export default function Header() {
             }
           </button>
 
-          {/* Logo — responsive width: smaller on mobile, full on desktop */}
-          <div className="flex justify-center flex-1 md:flex-1">
+          {/* Logo — left-aligned on mobile, centered on desktop */}
+          <div className="flex justify-start md:justify-center flex-1">
             <Link
               href="/"
-              className="relative h-8 w-24 md:h-10 md:w-36 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm"
+              className="relative h-8 w-24 md:h-10 md:w-36 flex items-center justify-center rounded-md overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
               aria-label="Alankar — Return to homepage"
             >
               <Image
