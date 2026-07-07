@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useAuthStore } from "@/store/useAuthStore";
 
 const NAV_LINKS = [
   { name: "Vault Overview", href: "/dashboard" },
@@ -13,6 +14,13 @@ const NAV_LINKS = [
 
 export default function DashboardNav() {
   const pathname = usePathname();
+  const router = useRouter();
+  const logout = useAuthStore((state) => state.logout);
+
+  function handleSignOut() {
+    logout();
+    router.push("/");
+  }
 
   return (
     <aside className="w-64 bg-brand-navy min-h-full shrink-0 flex flex-col pt-16 pb-8 px-0 border-r border-slate-border/20">
@@ -49,7 +57,11 @@ export default function DashboardNav() {
       </nav>
 
       <div className="mt-auto px-10">
-        <button className="text-[10px] tracking-[0.15em] uppercase text-gray-500 hover:text-white transition-colors duration-300">
+        <button
+          type="button"
+          onClick={handleSignOut}
+          className="text-[10px] tracking-[0.15em] uppercase text-gray-500 hover:text-white transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold rounded-sm"
+        >
           Secure Sign Out
         </button>
       </div>

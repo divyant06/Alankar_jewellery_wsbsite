@@ -6,11 +6,13 @@ import Image from "next/image";
 import { User, ShoppingBag } from "lucide-react";
 import { useGoldRateStore } from "@/store/useGoldRateStore";
 import { useCartStore } from "@/store/useCartStore";
+import { useAuthStore } from "@/store/useAuthStore";
 
 export default function Header() {
   const { rates, fetchLiveRates, isLoading } = useGoldRateStore();
   const getCartSummary = useCartStore((state) => state.getCartSummary);
   const toggleCart = useCartStore((state) => state.toggleCart);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   // Prevent hydration mismatch for the cart counter by tracking mounted state
   const [mounted, setMounted] = useState(false);
@@ -88,17 +90,29 @@ export default function Header() {
         </div>
 
         {/* Right-aligned utility triggers */}
-        <div className="flex-1 flex items-center justify-end space-x-6">
-          {/* FIXED: Wrapped icon inside an active Next.js Link targeting the client dashboard route */}
-          <Link 
-            href="/dashboard"
+        <div className="flex-1 flex items-center justify-end space-x-5">
+
+          {/* SIGN UP — visible only when not authenticated */}
+          {mounted && !isAuthenticated && (
+            <Link
+              href="/login"
+              className="luxury-tracking text-[10px] text-brand-navy hover:text-brand-gold uppercase transition-colors hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm"
+              aria-label="Sign up for an Alankar account"
+            >
+              Sign Up
+            </Link>
+          )}
+
+          {/* User icon — routes to /login when guest, /dashboard when authenticated */}
+          <Link
+            href={mounted && isAuthenticated ? "/dashboard" : "/login"}
             className="text-brand-navy hover:text-brand-gold transition-colors flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm p-1"
-            aria-label="Go to User Profile Dashboard"
+            aria-label={mounted && isAuthenticated ? "Go to Client Vault" : "Sign in to your account"}
           >
             <User className="h-5 w-5" strokeWidth={1.5} />
           </Link>
-          
-          <button 
+
+          <button
             onClick={toggleCart}
             className="text-brand-navy hover:text-brand-gold transition-colors relative flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm p-1"
             aria-label={`Shopping Cart with ${totalQuantity} items`}
